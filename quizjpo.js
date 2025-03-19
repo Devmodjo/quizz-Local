@@ -127,9 +127,10 @@ function showResult() {
     document.getElementById('result').innerText = `Vous avez obtenu ${score} sur ${questions.length} bonnes réponses.`;
 
     console.log("Score à envoyer:", score);
-
+    sessionStorage.setItem('score', score);
+    const scoreSessoin = sessionStorage.getItem('score');
     // Envoi du score au serveur via fetch
-    if(score){
+    if(scoreSessoin){
         const xhr = new XMLHttpRequest();
         xhr.open('POST', 'quizJPO.php', true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -139,7 +140,7 @@ function showResult() {
             }
         }
         // envoyer le score
-        xhr.send("score=" + encodeURIComponent(score));
+        xhr.send("score=" + encodeURIComponent(scoreSessoin));
     } else {
         console.error("Erreur lors de l'envoi du score:");
     }

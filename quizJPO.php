@@ -103,8 +103,12 @@ if (isset($_POST['score'])){
 </head>
 <body>
 
-<div class="container">
+<div class="container">( )
     <label for="">Nom Players: <?php echo htmlspecialchars($_SESSION['pseudoPlayer']); ?></label>
+    <!-- <label for=""><b><?php 
+    if(isset($_POST['score']))
+        echo htmlspecialchars($_POST['score']); 
+    ?></b></label> -->
     <h1>Quiz Interactif</h1><br>
     
     <div id="quiz">
@@ -112,6 +116,7 @@ if (isset($_POST['score'])){
             <div class="question" id="question">Question ici</div>
             <ul class="options" id="options">
                 <!-- Les options seront injectées ici -->
+                 
             </ul>
         </div>
         <div id="timer" class="timer"></div>
